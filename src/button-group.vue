@@ -8,9 +8,7 @@
   export default {
     name: "button-group",
     mounted(){
-      console.log(this.$el.children)
       for(let node of this.$el.children){
-        console.log(node)
         if(node.nodeName.toLowerCase()!=='button'){
           console.warn('该组件子元素应均为button')
         }
