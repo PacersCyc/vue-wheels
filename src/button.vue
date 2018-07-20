@@ -18,7 +18,10 @@
       },
       iconPosition:{
         type:String,
-        default:''
+        default:'left',
+        validator(value){
+          return value === 'left' || value === 'right'
+        }
       }
     }
   }
