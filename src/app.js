@@ -4,7 +4,9 @@ import Icon from './icon'
 import ButtonGroup from './button-group'
 
 import chai from 'chai'
+import spies from 'chai-spies'
 
+chai.use(spies)
 const expect = chai.expect
 
 Vue.component('c-button', Button)
@@ -96,12 +98,11 @@ new Vue({
     }
   })
   vm.$mount()
-  vm.$on('click', function(){
-    console.log(1)
-  })
+  let spy = chai.spy(()=>{})
+  vm.$on('click', spy)
   let button = vm.$el
   button.click()
-
+  expect(spy).to.have.been.called()
 
   vm.$el.remove()
   vm.$destroy()
