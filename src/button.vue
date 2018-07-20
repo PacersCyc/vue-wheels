@@ -1,9 +1,7 @@
 <template>
   <button class="c-button" :class="{[`icon-${iconPosition}`]:true}">
-    <!--<svg v-if="icon" class="icon">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>-->
-    <c-icon v-if="icon" :name="icon"></c-icon>
+    <c-icon class="loading" name="loading"></c-icon>
+    <c-icon class="icon" v-if="icon" :name="icon"></c-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -29,6 +27,18 @@
 </script>
 
 <style scoped lang="scss">
+  @keyframes spin {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  .loading{
+    animation: spin 2s infinite linear;
+  }
+  
   .c-button{
     font-size: var(--font-size);
     height:var(--button-height);
